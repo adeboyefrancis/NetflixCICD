@@ -36,8 +36,11 @@ jobs:
         npx audit-ci --moderate || echo "⚠️ Audit-ci check failed or not configured"
       continue-on-error: true
     
-    - name: 🏗️ Build project
+    - name: 🏗️ Run Test Build
       run: npm run build
+
+    - name: 🐳 Build Docker image
+      run: docker build -t ${{ github.repository }}:${{ github.sha }} .
     
     - name: 📢 Notify on success
       if: success()
