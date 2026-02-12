@@ -1,7 +1,9 @@
 name: Netflix Clone App CICD Pipeline
 on:
-  push:
-    branches: [ main ]
+  #push:
+    #branches: [ main ]
+
+  workflow_dispatch:
 
 jobs:
   build:
