@@ -39,8 +39,11 @@ jobs:
     - name: 🏗️ Run Test Build
       run: npm run build
 
-    - name: 🐳 Build Docker image
-      run: docker build -t ${{ github.repository }}:${{ github.sha }} .
+    - name: Build and push Docker image
+      run: |
+        REPO_NAME=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
+        docker build -t ${REPO_NAME}:${{ github.sha }} .
+        docker push ${REPO_NAME}:${{ github.sha }}
     
     - name: 📢 Notify on success
       if: success()
