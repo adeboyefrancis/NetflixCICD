@@ -4,7 +4,7 @@ This repository contains a Netflix‑style frontend built with React, TypeScript
 
 ## 🧪 Testing
 
-The project is configured to use **Jest** powered by `ts-jest` for TypeScript support.  A basic helper test is included to verify the configuration.
+The project is configured to use **Jest** powered by `ts-jest` for TypeScript support.  Because the Jest configuration itself is written in TypeScript, we also install `ts-node` so it can run on CI. A basic helper test is included to verify the configuration.
 
 ### Scripts
 
