@@ -103,3 +103,7 @@ terraform.rc
 
 # DO NOT ignore the lock file — commit this!
 # .terraform.lock.hcl
+
+
+# Local misc files
+Local.MD
