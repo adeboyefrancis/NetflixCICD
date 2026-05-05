@@ -124,7 +124,7 @@ export default function VideoCardModal({
             >{`${getRandomNumber(100)}% Match`}</Typography>
             <AgeLimitChip label={`${getRandomNumber(20)}+`} />
             <Typography variant="subtitle2">{`${formatMinuteToReadable(
-              getRandomNumber(180)
+              getRandomNumber(180),
             )}`}</Typography>
             <QualityChip label="HD" />
           </Stack>

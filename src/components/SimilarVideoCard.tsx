@@ -42,7 +42,7 @@ export default function SimilarVideoCard({ video }: SimilarVideoCardProps) {
           }}
         >
           <Typography variant="subtitle2">{`${formatMinuteToReadable(
-            getRandomNumber(180)
+            getRandomNumber(180),
           )}`}</Typography>
         </div>
         <div

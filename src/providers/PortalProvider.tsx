@@ -19,7 +19,7 @@ export const [usePortalData, PortalDataProvider] =
 export default function PortalProvider({ children }: { children: ReactNode }) {
   const [anchorElement, setAnchorElement] = useState<HTMLElement | null>(null);
   const [miniModalMediaData, setMiniModalMediaData] = useState<Movie | null>(
-    null
+    null,
   );
 
   const handleChangePortal = useCallback(
@@ -27,13 +27,11 @@ export default function PortalProvider({ children }: { children: ReactNode }) {
       setAnchorElement(anchor);
       setMiniModalMediaData(video);
     },
-    []
+    [],
   );
 
   return (
-    <Provider
-      value={handleChangePortal}
-    >
+    <Provider value={handleChangePortal}>
       <PortalDataProvider
         value={{
           anchorElement,

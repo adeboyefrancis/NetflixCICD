@@ -1,5 +1,5 @@
-import { Company, Country, Language } from './Common';
-import { Genre } from './Genre';
+import { Company, Country, Language } from "./Common";
+import { Genre } from "./Genre";
 
 export type Appended_Video = {
   id: string;

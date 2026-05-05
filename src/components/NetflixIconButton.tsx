@@ -21,7 +21,7 @@ const NetflixIconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         {children}
       </IconButton>
     );
-  }
+  },
 );
 
 export default NetflixIconButton;

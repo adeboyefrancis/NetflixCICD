@@ -19,7 +19,7 @@ const PlayerControlButton = forwardRef<HTMLButtonElement, IconButtonProps>(
     >
       {children}
     </IconButton>
-  )
+  ),
 );
 
 export default PlayerControlButton;

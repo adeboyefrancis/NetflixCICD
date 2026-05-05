@@ -1,4 +1,3 @@
-
 import { CustomGenre } from "src/types/Genre";
 
 export const API_ENDPOINT_URL = import.meta.env.VITE_APP_API_ENDPOINT_URL;

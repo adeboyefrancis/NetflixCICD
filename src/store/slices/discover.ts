@@ -34,7 +34,7 @@ const discoverSlice = createSlice({
     builder.addMatcher(
       isAnyOf(
         extendedApi.endpoints.getVideosByMediaTypeAndCustomGenre.matchFulfilled,
-        extendedApi.endpoints.getVideosByMediaTypeAndGenreId.matchFulfilled
+        extendedApi.endpoints.getVideosByMediaTypeAndGenreId.matchFulfilled,
       ),
       (state, action) => {
         const {
@@ -49,7 +49,7 @@ const discoverSlice = createSlice({
         state[mediaType][itemKey].results.push(...results);
         state[mediaType][itemKey].total_pages = total_pages;
         state[mediaType][itemKey].total_results = total_results;
-      }
+      },
     );
   },
 });
@@ -73,7 +73,7 @@ const extendedApi = tmdbApi.injectEndpoints({
       transformResponse: (
         response: PaginatedMovieResult,
         _,
-        { mediaType, genreId }
+        { mediaType, genreId },
       ) => ({
         ...response,
         mediaType,
@@ -94,7 +94,7 @@ const extendedApi = tmdbApi.injectEndpoints({
       transformResponse: (
         response: PaginatedMovieResult,
         _,
-        { mediaType, apiString }
+        { mediaType, apiString },
       ) => {
         return {
           ...response,

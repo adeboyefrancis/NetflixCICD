@@ -43,7 +43,7 @@ export default function DetailModalProvider({
         setDetail(INITIAL_DETAIL_STATE);
       }
     },
-    []
+    [],
   );
 
   useEffect(() => {

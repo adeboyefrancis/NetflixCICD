@@ -32,7 +32,7 @@ const Transition = forwardRef(function Transition(
   props: TransitionProps & {
     children: React.ReactElement<any, any>;
   },
-  ref: React.Ref<unknown>
+  ref: React.Ref<unknown>,
 ) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -41,7 +41,7 @@ export default function DetailModal() {
   const { detail, setDetailType } = useDetailModal();
   const { data: similarVideos } = useGetSimilarVideosQuery(
     { mediaType: detail.mediaType ?? MEDIA_TYPE.Movie, id: detail.id ?? 0 },
-    { skip: !detail.id }
+    { skip: !detail.id },
   );
   const playerRef = useRef<Player | null>(null);
   const [muted, setMuted] = useState(true);
@@ -201,7 +201,7 @@ export default function DetailModal() {
                         </Typography>
                         <AgeLimitChip label={`${getRandomNumber(20)}+`} />
                         <Typography variant="subtitle2">{`${formatMinuteToReadable(
-                          getRandomNumber(180)
+                          getRandomNumber(180),
                         )}`}</Typography>
                         <QualityChip label="HD" />
                       </Stack>

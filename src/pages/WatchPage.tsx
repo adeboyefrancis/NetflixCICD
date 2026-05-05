@@ -222,7 +222,7 @@ export function Component() {
                   />
                   <Typography variant="caption" sx={{ color: "white" }}>
                     {`${formatTime(playerState.playedSeconds)} / ${formatTime(
-                      playerState.duration
+                      playerState.duration,
                     )}`}
                   </Typography>
                 </Stack>

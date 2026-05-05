@@ -8,10 +8,6 @@ interface GridPageProps {
   mediaType: MEDIA_TYPE;
 }
 export default function GridPage({ genre, mediaType }: GridPageProps) {
-  const Component = withPagination(
-    GridWithInfiniteScroll,
-    mediaType,
-    genre
-  );
+  const Component = withPagination(GridWithInfiniteScroll, mediaType, genre);
   return <Component />;
 }

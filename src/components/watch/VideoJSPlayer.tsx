@@ -28,7 +28,7 @@ export default function VideoJSPlayer({
           options,
           () => {
             onReady && onReady(player);
-          }
+          },
         ));
 
         // import("video.js").then(async ({ default: videojs }) => {
