@@ -1,8 +1,9 @@
-import { styled } from "@mui/material/styles";
-import Box from "@mui/material/Box";
+import { MouseEventHandler, ReactNode } from "react";
+
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import { MouseEventHandler, ReactNode } from "react";
+import Box from "@mui/material/Box";
+import { styled } from "@mui/material/styles";
 
 const ArrowStyle = styled(Box)(({ theme }) => ({
   top: 0,

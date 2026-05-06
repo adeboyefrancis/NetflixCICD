@@ -1,32 +1,31 @@
 import * as React from "react";
+
+import MenuIcon from "@mui/icons-material/Menu";
 import AppBar from "@mui/material/AppBar";
+import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 import Stack from "@mui/material/Stack";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import useOffSetTop from "src/hooks/useOffSetTop";
+import Typography from "@mui/material/Typography";
+
 import { APP_BAR_HEIGHT } from "src/constant";
+import useOffSetTop from "src/hooks/useOffSetTop";
+
 import Logo from "../Logo";
-import SearchBox from "../SearchBox";
 import NetflixNavigationLink from "../NetflixNavigationLink";
+import SearchBox from "../SearchBox";
 
 const pages = ["My List", "Movies", "Tv Shows"];
 
 const MainHeader = () => {
   const isOffset = useOffSetTop(APP_BAR_HEIGHT);
 
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null,
-  );
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
-    null,
-  );
+  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -52,9 +51,9 @@ const MainHeader = () => {
         backgroundImage: "none",
         ...(isOffset
           ? {
-              bgcolor: "primary.main",
-              boxShadow: (theme) => theme.shadows[4],
-            }
+            bgcolor: "primary.main",
+            boxShadow: (theme) => theme.shadows[4],
+          }
           : { boxShadow: 0, bgcolor: "transparent" }),
       }}
     >

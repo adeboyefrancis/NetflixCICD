@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import Breadcrumbs, { BreadcrumbsProps } from "@mui/material/Breadcrumbs";
+import Typography from "@mui/material/Typography";
 
 const Separator = (
   <Box
@@ -18,10 +18,7 @@ interface GenreBreadcrumbsProps extends BreadcrumbsProps {
   genres: string[];
 }
 
-export default function GenreBreadcrumbs({
-  genres,
-  ...others
-}: GenreBreadcrumbsProps) {
+export default function GenreBreadcrumbs({ genres, ...others }: GenreBreadcrumbsProps) {
   return (
     <Breadcrumbs separator={Separator} {...others}>
       {genres.map((genre, idx) => (

@@ -1,5 +1,4 @@
-export const getRandomNumber = (maxNumber: number) =>
-  Math.floor(Math.random() * maxNumber);
+export const getRandomNumber = (maxNumber: number) => Math.floor(Math.random() * maxNumber);
 
 export const formatMinuteToReadable = (minutes: number) => {
   const h = Math.floor(minutes / 60);
@@ -13,21 +12,13 @@ export const formatMinuteToReadable = (minutes: number) => {
 };
 
 export const formatBytes = (bytes: number, decimals: number = 2) => {
-  if (!+bytes) return "0 Bytes";
+  if (!+bytes) {
+    return "0 Bytes";
+  }
 
   const k = 1024;
   const dm = decimals < 0 ? 0 : decimals;
-  const sizes = [
-    "Bytes",
-    "KiB",
-    "MiB",
-    "GiB",
-    "TiB",
-    "PiB",
-    "EiB",
-    "ZiB",
-    "YiB",
-  ];
+  const sizes = ["Bytes", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB"];
 
   const i = Math.floor(Math.log(bytes) / Math.log(k));
 

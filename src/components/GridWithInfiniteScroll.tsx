@@ -1,12 +1,15 @@
 import { useRef, useEffect } from "react";
-import Grid from "@mui/material/Grid";
+
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import VideoItemWithHover from "./VideoItemWithHover";
-import { CustomGenre, Genre } from "src/types/Genre";
-import { PaginatedMovieResult } from "src/types/Common";
+
 import useIntersectionObserver from "src/hooks/useIntersectionObserver";
+import { PaginatedMovieResult } from "src/types/Common";
+import { CustomGenre, Genre } from "src/types/Genre";
+
+import VideoItemWithHover from "./VideoItemWithHover";
 
 interface GridWithInfiniteScrollProps {
   genre: Genre | CustomGenre;
@@ -22,11 +25,7 @@ export default function GridWithInfiniteScroll({
   const intersection = useIntersectionObserver(intersectionRef);
 
   useEffect(() => {
-    if (
-      intersection &&
-      intersection.intersectionRatio === 1 &&
-      data.page < data.total_pages
-    ) {
+    if (intersection && intersection.intersectionRatio === 1 && data.page < data.total_pages) {
       handleNext(data.page + 1);
     }
   }, [intersection]);
@@ -50,14 +49,7 @@ export default function GridWithInfiniteScroll({
           {data.results
             .filter((v) => !!v.backdrop_path)
             .map((video, idx) => (
-              <Grid
-                key={`${video.id}_${idx}`}
-                item
-                xs={6}
-                sm={3}
-                md={2}
-                sx={{ zIndex: 1 }}
-              >
+              <Grid key={`${video.id}_${idx}`} item xs={6} sm={3} md={2} sx={{ zIndex: 1 }}>
                 <VideoItemWithHover video={video} />
               </Grid>
             ))}

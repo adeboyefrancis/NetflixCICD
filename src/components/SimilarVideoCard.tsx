@@ -1,14 +1,16 @@
-import Stack from "@mui/material/Stack";
+import AddIcon from "@mui/icons-material/Add";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
+import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import AddIcon from "@mui/icons-material/Add";
-import { Movie } from "src/types/Movie";
-import NetflixIconButton from "./NetflixIconButton";
-import MaxLineTypography from "./MaxLineTypography";
-import { formatMinuteToReadable, getRandomNumber } from "src/utils/common";
-import AgeLimitChip from "./AgeLimitChip";
+
 import { useGetConfigurationQuery } from "src/store/slices/configuration";
+import { Movie } from "src/types/Movie";
+import { formatMinuteToReadable, getRandomNumber } from "src/utils/common";
+
+import AgeLimitChip from "./AgeLimitChip";
+import MaxLineTypography from "./MaxLineTypography";
+import NetflixIconButton from "./NetflixIconButton";
 
 interface SimilarVideoCardProps {
   video: Movie;
@@ -56,11 +58,7 @@ export default function SimilarVideoCard({ video }: SimilarVideoCardProps) {
             position: "absolute",
           }}
         >
-          <MaxLineTypography
-            maxLine={1}
-            sx={{ width: "80%", fontWeight: 700 }}
-            variant="subtitle1"
-          >
+          <MaxLineTypography maxLine={1} sx={{ width: "80%", fontWeight: 700 }} variant="subtitle1">
             {video.title}
           </MaxLineTypography>
         </div>
@@ -75,9 +73,7 @@ export default function SimilarVideoCard({ video }: SimilarVideoCardProps) {
               >{`${getRandomNumber(100)}% Match`}</Typography>
               <Stack direction="row" spacing={1} alignItems="center">
                 <AgeLimitChip label={`${getRandomNumber(20)}+`} />
-                <Typography variant="body2">
-                  {video.release_date.substring(0, 4)}
-                </Typography>
+                <Typography variant="body2">{video.release_date.substring(0, 4)}</Typography>
               </Stack>
             </div>
             <div style={{ flexGrow: 1 }} />

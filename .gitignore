@@ -107,3 +107,5 @@ terraform.rc
 
 # Local misc files
 Local.MD
+AGENTS.md
+LINTING_SETUP.md

@@ -3,15 +3,16 @@ import {
   useLoaderData,
   // useParams
 } from "react-router-dom";
-import { COMMON_TITLES } from "src/constant";
+
 import GridPage from "src/components/GridPage";
-import { MEDIA_TYPE } from "src/types/Common";
-import { CustomGenre, Genre } from "src/types/Genre";
+import { COMMON_TITLES } from "src/constant";
+import store from "src/store";
 import {
   genreSliceEndpoints,
   // useGetGenresQuery
 } from "src/store/slices/genre";
-import store from "src/store";
+import { MEDIA_TYPE } from "src/types/Common";
+import { CustomGenre, Genre } from "src/types/Genre";
 
 export async function loader({ params }: LoaderFunctionArgs) {
   let genre: CustomGenre | Genre | undefined = COMMON_TITLES.find(
@@ -28,10 +29,7 @@ export async function loader({ params }: LoaderFunctionArgs) {
 }
 
 export function Component() {
-  const genre: CustomGenre | Genre | undefined = useLoaderData() as
-    | CustomGenre
-    | Genre
-    | undefined;
+  const genre: CustomGenre | Genre | undefined = useLoaderData() as CustomGenre | Genre | undefined;
   // const { genreId } = useParams();
   // const { data: genres } = useGetGenresQuery(MEDIA_TYPE.Movie);
   // let genre: Genre | CustomGenre | undefined;

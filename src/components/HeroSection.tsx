@@ -1,24 +1,26 @@
 import { useEffect, useState, useMemo, useCallback, useRef } from "react";
+
+import VolumeOffIcon from "@mui/icons-material/VolumeOff";
+import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
-import VolumeUpIcon from "@mui/icons-material/VolumeUp";
-import VolumeOffIcon from "@mui/icons-material/VolumeOff";
 import Player from "video.js/dist/types/player";
 
-import { getRandomNumber } from "src/utils/common";
-import MaxLineTypography from "./MaxLineTypography";
-import PlayButton from "./PlayButton";
-import MoreInfoButton from "./MoreInfoButton";
-import NetflixIconButton from "./NetflixIconButton";
-import MaturityRate from "./MaturityRate";
 import useOffSetTop from "src/hooks/useOffSetTop";
 import { useDetailModal } from "src/providers/DetailModalProvider";
-import { MEDIA_TYPE } from "src/types/Common";
 import {
   useGetVideosByMediaTypeAndCustomGenreQuery,
   useLazyGetAppendedVideosQuery,
 } from "src/store/slices/discover";
+import { MEDIA_TYPE } from "src/types/Common";
 import { Movie } from "src/types/Movie";
+import { getRandomNumber } from "src/utils/common";
+
+import MaturityRate from "./MaturityRate";
+import MaxLineTypography from "./MaxLineTypography";
+import MoreInfoButton from "./MoreInfoButton";
+import NetflixIconButton from "./NetflixIconButton";
+import PlayButton from "./PlayButton";
 import VideoJSPlayer from "./watch/VideoJSPlayer";
 
 interface TopTrailerProps {
@@ -133,7 +135,7 @@ export default function TopTrailer({ mediaType }: TopTrailerProps) {
                 )}
                 <Box
                   sx={{
-                    background: `linear-gradient(77deg,rgba(0,0,0,.6),transparent 85%)`,
+                    background: "linear-gradient(77deg,rgba(0,0,0,.6),transparent 85%)",
                     top: 0,
                     left: 0,
                     bottom: 0,
@@ -203,18 +205,10 @@ export default function TopTrailer({ mediaType }: TopTrailerProps) {
                     justifyContent: "flex-end",
                   }}
                 >
-                  <MaxLineTypography
-                    variant="h2"
-                    maxLine={1}
-                    color="text.primary"
-                  >
+                  <MaxLineTypography variant="h2" maxLine={1} color="text.primary">
                     {video.title}
                   </MaxLineTypography>
-                  <MaxLineTypography
-                    variant="h5"
-                    maxLine={3}
-                    color="text.primary"
-                  >
+                  <MaxLineTypography variant="h5" maxLine={3} color="text.primary">
                     {video.overview}
                   </MaxLineTypography>
                   <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>

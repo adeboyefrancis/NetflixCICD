@@ -1,16 +1,20 @@
 import { useEffect, useRef } from "react";
-import Player from "video.js/dist/types/player";
+
 import videojs from "video.js";
+import Player from "video.js/dist/types/player";
 import "videojs-youtube";
 import "video.js/dist/video-js.css";
+
+interface VideoJSPlayerProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  options: any;
+  onReady: (player: Player) => void;
+}
 
 export default function VideoJSPlayer({
   options,
   onReady,
-}: {
-  options: any;
-  onReady: (player: Player) => void;
-}) {
+}: VideoJSPlayerProps) {
   const videoRef = useRef<HTMLDivElement | null>(null);
   const playerRef = useRef<Player | null>(null);
 
@@ -23,13 +27,9 @@ export default function VideoJSPlayer({
         // videoElement.classList.add("vjs-big-play-centered", "vjs-16-9");
 
         videoRef.current?.appendChild(videoElement);
-        const player = (playerRef.current = videojs(
-          videoElement,
-          options,
-          () => {
-            onReady && onReady(player);
-          },
-        ));
+        const player = (playerRef.current = videojs(videoElement, options, () => {
+          onReady && onReady(player);
+        }));
 
         // import("video.js").then(async ({ default: videojs }) => {
         //   await import("video.js/dist/video-js.css");

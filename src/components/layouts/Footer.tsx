@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
+import Divider from "@mui/material/Divider";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
 
 export default function Footer() {
   return (

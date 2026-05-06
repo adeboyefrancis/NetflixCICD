@@ -1,5 +1,5 @@
-import Button, { ButtonProps } from "@mui/material/Button";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import Button, { ButtonProps } from "@mui/material/Button";
 
 export default function MoreInfoButton({ sx, ...others }: ButtonProps) {
   return (

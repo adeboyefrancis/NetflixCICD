@@ -1,36 +1,36 @@
 import { useNavigate } from "react-router-dom";
-import Stack from "@mui/material/Stack";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import VolumeUpIcon from "@mui/icons-material/VolumeUp";
-import PlayCircleIcon from "@mui/icons-material/PlayCircle";
-import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
+
 import AddIcon from "@mui/icons-material/Add";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { Movie } from "src/types/Movie";
-import { usePortal } from "src/providers/PortalProvider";
-import { useDetailModal } from "src/providers/DetailModalProvider";
-import { formatMinuteToReadable, getRandomNumber } from "src/utils/common";
-import NetflixIconButton from "./NetflixIconButton";
-import MaxLineTypography from "./MaxLineTypography";
-import AgeLimitChip from "./AgeLimitChip";
-import QualityChip from "./QualityChip";
-import GenreBreadcrumbs from "./GenreBreadcrumbs";
-import { useGetConfigurationQuery } from "src/store/slices/configuration";
-import { MEDIA_TYPE } from "src/types/Common";
-import { useGetGenresQuery } from "src/store/slices/genre";
+import PlayCircleIcon from "@mui/icons-material/PlayCircle";
+import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
+import VolumeUpIcon from "@mui/icons-material/VolumeUp";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+
 import { MAIN_PATH } from "src/constant";
+import { useDetailModal } from "src/providers/DetailModalProvider";
+import { usePortal } from "src/providers/PortalProvider";
+import { useGetConfigurationQuery } from "src/store/slices/configuration";
+import { useGetGenresQuery } from "src/store/slices/genre";
+import { MEDIA_TYPE } from "src/types/Common";
+import { Movie } from "src/types/Movie";
+import { formatMinuteToReadable, getRandomNumber } from "src/utils/common";
+
+import AgeLimitChip from "./AgeLimitChip";
+import GenreBreadcrumbs from "./GenreBreadcrumbs";
+import MaxLineTypography from "./MaxLineTypography";
+import NetflixIconButton from "./NetflixIconButton";
+import QualityChip from "./QualityChip";
 
 interface VideoCardModalProps {
   video: Movie;
   anchorElement: HTMLElement;
 }
 
-export default function VideoCardModal({
-  video,
-  anchorElement,
-}: VideoCardModalProps) {
+export default function VideoCardModal({ video, anchorElement }: VideoCardModalProps) {
   const navigate = useNavigate();
 
   const { data: configuration } = useGetConfigurationQuery(undefined);
@@ -80,11 +80,7 @@ export default function VideoCardModal({
             position: "absolute",
           }}
         >
-          <MaxLineTypography
-            maxLine={2}
-            sx={{ width: "80%", fontWeight: 700 }}
-            variant="h6"
-          >
+          <MaxLineTypography maxLine={2} sx={{ width: "80%", fontWeight: 700 }} variant="h6">
             {video.title}
           </MaxLineTypography>
           <div style={{ flexGrow: 1 }} />
@@ -96,10 +92,7 @@ export default function VideoCardModal({
       <CardContent>
         <Stack spacing={1}>
           <Stack direction="row" spacing={1}>
-            <NetflixIconButton
-              sx={{ p: 0 }}
-              onClick={() => navigate(`/${MAIN_PATH.watch}`)}
-            >
+            <NetflixIconButton sx={{ p: 0 }} onClick={() => navigate(`/${MAIN_PATH.watch}`)}>
               <PlayCircleIcon sx={{ width: 40, height: 40 }} />
             </NetflixIconButton>
             <NetflixIconButton>

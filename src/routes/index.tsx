@@ -1,6 +1,6 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
-import { MAIN_PATH } from "src/constant";
 
+import { MAIN_PATH } from "src/constant";
 import MainLayout from "src/layouts/MainLayout";
 
 const router = createBrowserRouter([

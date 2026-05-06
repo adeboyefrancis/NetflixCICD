@@ -1,4 +1,5 @@
 import { ElementType, useCallback, useEffect } from "react";
+
 import MainLoadingScreen from "src/components/MainLoadingScreen";
 import { useAppDispatch, useAppSelector } from "src/hooks/redux";
 import {
@@ -19,10 +20,8 @@ export default function withPagination(
     const itemKey = genre.id ?? (genre as CustomGenre).apiString;
     const mediaState = useAppSelector((state) => state.discover[mediaType]);
     const pageState = mediaState ? mediaState[itemKey] : undefined;
-    const [getVideosByMediaTypeAndGenreId] =
-      useLazyGetVideosByMediaTypeAndGenreIdQuery();
-    const [getVideosByMediaTypeAndCustomGenre] =
-      useLazyGetVideosByMediaTypeAndCustomGenreQuery();
+    const [getVideosByMediaTypeAndGenreId] = useLazyGetVideosByMediaTypeAndGenreIdQuery();
+    const [getVideosByMediaTypeAndCustomGenre] = useLazyGetVideosByMediaTypeAndCustomGenreQuery();
 
     useEffect(() => {
       if (!mediaState || !pageState) {
@@ -54,9 +53,7 @@ export default function withPagination(
     }, []);
 
     if (pageState) {
-      return (
-        <Component genre={genre} data={pageState} handleNext={handleNext} />
-      );
+      return <Component genre={genre} data={pageState} handleNext={handleNext} />;
     }
     return <MainLoadingScreen />;
   };

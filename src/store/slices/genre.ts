@@ -1,5 +1,6 @@
 import { TMDB_V3_API_KEY } from "src/constant";
 import { Genre } from "src/types/Genre";
+
 import { tmdbApi } from "./apiSlice";
 
 const extendedApi = tmdbApi.injectEndpoints({
@@ -16,5 +17,4 @@ const extendedApi = tmdbApi.injectEndpoints({
   }),
 });
 
-export const { useGetGenresQuery, endpoints: genreSliceEndpoints } =
-  extendedApi;
+export const { useGetGenresQuery, endpoints: genreSliceEndpoints } = extendedApi;

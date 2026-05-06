@@ -1,25 +1,24 @@
 import { useState, useRef, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import Player from "video.js/dist/types/player";
-import { Box, Stack, Typography } from "@mui/material";
-import { SliderUnstyledOwnProps } from "@mui/base/SliderUnstyled";
-import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-import PauseIcon from "@mui/icons-material/Pause";
-import SkipNextIcon from "@mui/icons-material/SkipNext";
-import FullscreenIcon from "@mui/icons-material/Fullscreen";
-import SettingsIcon from "@mui/icons-material/Settings";
-import BrandingWatermarkOutlinedIcon from "@mui/icons-material/BrandingWatermarkOutlined";
-import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 
-import useWindowSize from "src/hooks/useWindowSize";
-import { formatTime } from "src/utils/common";
+import { SliderUnstyledOwnProps } from "@mui/base/SliderUnstyled";
+import BrandingWatermarkOutlinedIcon from "@mui/icons-material/BrandingWatermarkOutlined";
+import FullscreenIcon from "@mui/icons-material/Fullscreen";
+import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
+import PauseIcon from "@mui/icons-material/Pause";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import SettingsIcon from "@mui/icons-material/Settings";
+import SkipNextIcon from "@mui/icons-material/SkipNext";
+import { Box, Stack, Typography } from "@mui/material";
+import Player from "video.js/dist/types/player";
 
 import MaxLineTypography from "src/components/MaxLineTypography";
-import VolumeControllers from "src/components/watch/VolumeControllers";
-import VideoJSPlayer from "src/components/watch/VideoJSPlayer";
-import PlayerSeekbar from "src/components/watch/PlayerSeekbar";
 import PlayerControlButton from "src/components/watch/PlayerControlButton";
-import MainLoadingScreen from "src/components/MainLoadingScreen";
+import PlayerSeekbar from "src/components/watch/PlayerSeekbar";
+import VideoJSPlayer from "src/components/watch/VideoJSPlayer";
+import VolumeControllers from "src/components/watch/VolumeControllers";
+import useWindowSize from "src/hooks/useWindowSize";
+import { formatTime } from "src/utils/common";
 
 export function Component() {
   const playerRef = useRef<Player | null>(null);
@@ -103,7 +102,7 @@ export function Component() {
     navigate("/browse");
   };
 
-  if (!!videoJsOptions.width) {
+  if (videoJsOptions.width) {
     return (
       <Box
         sx={{
@@ -167,10 +166,7 @@ export function Component() {
               </Typography>
             </Box>
 
-            <Box
-              px={{ xs: 1, sm: 2 }}
-              sx={{ position: "absolute", bottom: 20, left: 0, right: 0 }}
-            >
+            <Box px={{ xs: 1, sm: 2 }} sx={{ position: "absolute", bottom: 20, left: 0, right: 0 }}>
               {/* Seekbar */}
               <Stack direction="row" alignItems="center" spacing={1}>
                 <PlayerSeekbar
@@ -184,11 +180,7 @@ export function Component() {
               {/* Controller */}
               <Stack direction="row" alignItems="center">
                 {/* left controller */}
-                <Stack
-                  direction="row"
-                  spacing={{ xs: 0.5, sm: 1.5, md: 2 }}
-                  alignItems="center"
-                >
+                <Stack direction="row" spacing={{ xs: 0.5, sm: 1.5, md: 2 }} alignItems="center">
                   {!playerState.paused ? (
                     <PlayerControlButton
                       onClick={() => {
@@ -242,11 +234,7 @@ export function Component() {
                 {/* end middle time */}
 
                 {/* right controller */}
-                <Stack
-                  direction="row"
-                  alignItems="center"
-                  spacing={{ xs: 0.5, sm: 1.5, md: 2 }}
-                >
+                <Stack direction="row" alignItems="center" spacing={{ xs: 0.5, sm: 1.5, md: 2 }}>
                   <PlayerControlButton>
                     <SettingsIcon />
                   </PlayerControlButton>

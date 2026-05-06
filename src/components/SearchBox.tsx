@@ -1,18 +1,19 @@
 import { useState, useRef } from "react";
-import { styled } from "@mui/material/styles";
-import InputBase from "@mui/material/InputBase";
-import SearchIcon from "@mui/icons-material/Search";
 
-const Search = styled("div")(({ theme }) => ({
+import SearchIcon from "@mui/icons-material/Search";
+import InputBase from "@mui/material/InputBase";
+import { styled } from "@mui/material/styles";
+
+const Search = styled("div")(({ theme: _theme }) => ({
   position: "relative",
   width: "100%",
   display: "flex",
   alignItems: "center",
 }));
 
-const SearchIconWrapper = styled("div")(({ theme }) => ({
+const SearchIconWrapper = styled("div")(({ theme: _theme }) => ({
   cursor: "pointer",
-  padding: theme.spacing(0, 1),
+  padding: _theme.spacing(0, 1),
   height: "100%",
   display: "flex",
   alignItems: "center",
@@ -44,11 +45,7 @@ export default function SearchBox() {
   };
 
   return (
-    <Search
-      sx={
-        isFocused ? { border: "1px solid white", backgroundColor: "black" } : {}
-      }
-    >
+    <Search sx={isFocused ? { border: "1px solid white", backgroundColor: "black" } : {}}>
       <SearchIconWrapper onClick={handleClickSearchIcon}>
         <SearchIcon />
       </SearchIconWrapper>

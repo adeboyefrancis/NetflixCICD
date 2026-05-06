@@ -16,18 +16,13 @@ export interface DetailModalConsumerProps {
   setDetailType: (newDetailType: DetailType) => void;
 }
 
-export const [useDetailModal, Provider] =
-  createSafeContext<DetailModalConsumerProps>();
+export const [useDetailModal, Provider] = createSafeContext<DetailModalConsumerProps>();
 
-export default function DetailModalProvider({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default function DetailModalProvider({ children }: { children: ReactNode }) {
   const location = useLocation();
-  const [detail, setDetail] = useState<
-    { mediaDetail?: MovieDetail } & DetailType
-  >(INITIAL_DETAIL_STATE);
+  const [detail, setDetail] = useState<{ mediaDetail?: MovieDetail } & DetailType>(
+    INITIAL_DETAIL_STATE,
+  );
 
   const [getAppendedVideos] = useLazyGetAppendedVideosQuery();
 
@@ -50,9 +45,5 @@ export default function DetailModalProvider({
     setDetail(INITIAL_DETAIL_STATE);
   }, [location.pathname, setDetail]);
 
-  return (
-    <Provider value={{ detail, setDetailType: handleChangeDetail }}>
-      {children}
-    </Provider>
-  );
+  return <Provider value={{ detail, setDetailType: handleChangeDetail }}>{children}</Provider>;
 }

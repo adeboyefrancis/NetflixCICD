@@ -1,53 +1,52 @@
 import { useState, useRef } from "react";
 import Slider, { Settings } from "react-slick";
-import { motion } from "framer-motion";
 
-import { styled, Theme, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
+import { styled, Theme, useTheme } from "@mui/material/styles";
+import { motion } from "framer-motion";
 
-import CustomNavigation from "./CustomNavigation";
-import VideoItemWithHover from "src/components/VideoItemWithHover";
-import { ARROW_MAX_WIDTH } from "src/constant";
-import NetflixNavigationLink from "src/components/NetflixNavigationLink";
 import MotionContainer from "src/components/animate/MotionContainer";
 import { varFadeIn } from "src/components/animate/variants/fade/FadeIn";
+import NetflixNavigationLink from "src/components/NetflixNavigationLink";
+import VideoItemWithHover from "src/components/VideoItemWithHover";
+import { ARROW_MAX_WIDTH } from "src/constant";
+import { PaginatedMovieResult } from "src/types/Common";
 import { CustomGenre, Genre } from "src/types/Genre";
 import { Movie } from "src/types/Movie";
-import { PaginatedMovieResult } from "src/types/Common";
+
+import CustomNavigation from "./CustomNavigation";
 
 const RootStyle = styled("div")(() => ({
   position: "relative",
   overflow: "inherit",
 }));
 
-const StyledSlider = styled(Slider)(
-  ({ theme, padding }: { theme: Theme; padding: number }) => ({
-    display: "flex !important",
-    justifyContent: "center",
-    overflow: "initial !important",
+const StyledSlider = styled(Slider)(({ theme, padding }: { theme: Theme; padding: number }) => ({
+  display: "flex !important",
+  justifyContent: "center",
+  overflow: "initial !important",
+  "& > .slick-list": {
+    overflow: "visible",
+  },
+  [theme.breakpoints.up("sm")]: {
     "& > .slick-list": {
-      overflow: "visible",
+      width: `calc(100% - ${2 * padding}px)`,
     },
-    [theme.breakpoints.up("sm")]: {
-      "& > .slick-list": {
-        width: `calc(100% - ${2 * padding}px)`,
-      },
-      "& .slick-list > .slick-track": {
-        margin: "0px !important",
-      },
-      "& .slick-list > .slick-track > .slick-current > div > .NetflixBox-root > .NetflixPaper-root:hover":
-        {
-          transformOrigin: "0% 50% !important",
-        },
+    "& .slick-list > .slick-track": {
+      margin: "0px !important",
     },
-    [theme.breakpoints.down("sm")]: {
-      "& > .slick-list": {
-        width: `calc(100% - ${padding}px)`,
+    "& .slick-list > .slick-track > .slick-current > div > .NetflixBox-root > .NetflixPaper-root:hover":
+      {
+        transformOrigin: "0% 50% !important",
       },
+  },
+  [theme.breakpoints.down("sm")]: {
+    "& > .slick-list": {
+      width: `calc(100% - ${padding}px)`,
     },
-  }),
-);
+  },
+}));
 
 interface SlideItemProps {
   item: Movie;
@@ -148,9 +147,7 @@ export default function SlickSlider({ data, genre }: SlickSliderProps) {
           >
             <NetflixNavigationLink
               variant="h5"
-              to={`/genre/${
-                genre.id || genre.name.toLowerCase().replace(" ", "_")
-              }`}
+              to={`/genre/${genre.id || genre.name.toLowerCase().replace(" ", "_")}`}
               sx={{
                 display: "inline-block",
                 fontWeight: 700,
@@ -185,12 +182,7 @@ export default function SlickSlider({ data, genre }: SlickSliderProps) {
               onPrevious={handlePrevious}
               activeSlideIndex={activeSlideIndex}
             >
-              <StyledSlider
-                ref={sliderRef}
-                {...settings}
-                padding={ARROW_MAX_WIDTH}
-                theme={theme}
-              >
+              <StyledSlider ref={sliderRef} {...settings} padding={ARROW_MAX_WIDTH} theme={theme}>
                 {data.results
                   .filter((i) => !!i.backdrop_path)
                   .map((item) => (

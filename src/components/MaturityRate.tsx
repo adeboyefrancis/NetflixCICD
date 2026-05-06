@@ -1,5 +1,6 @@
-import Box from "@mui/material/Box";
 import { ReactNode } from "react";
+
+import Box from "@mui/material/Box";
 
 export default function MaturityRate({ children }: { children: ReactNode }) {
   return (

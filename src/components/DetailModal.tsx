@@ -1,41 +1,45 @@
 import { forwardRef, useCallback, useRef, useState } from "react";
+
+import AddIcon from "@mui/icons-material/Add";
+import CloseIcon from "@mui/icons-material/Close";
+import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
+import VolumeOffIcon from "@mui/icons-material/VolumeOff";
+import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
-import Stack from "@mui/material/Stack";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
+import Grid from "@mui/material/Grid";
+import IconButton from "@mui/material/IconButton";
 import Slide from "@mui/material/Slide";
+import Stack from "@mui/material/Stack";
 import { TransitionProps } from "@mui/material/transitions";
-import CloseIcon from "@mui/icons-material/Close";
-import AddIcon from "@mui/icons-material/Add";
-import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
-import VolumeUpIcon from "@mui/icons-material/VolumeUp";
-import VolumeOffIcon from "@mui/icons-material/VolumeOff";
+import Typography from "@mui/material/Typography";
 import Player from "video.js/dist/types/player";
 
-import MaxLineTypography from "./MaxLineTypography";
-import PlayButton from "./PlayButton";
-import NetflixIconButton from "./NetflixIconButton";
-import AgeLimitChip from "./AgeLimitChip";
-import QualityChip from "./QualityChip";
-import { formatMinuteToReadable, getRandomNumber } from "src/utils/common";
-import SimilarVideoCard from "./SimilarVideoCard";
 import { useDetailModal } from "src/providers/DetailModalProvider";
 import { useGetSimilarVideosQuery } from "src/store/slices/discover";
 import { MEDIA_TYPE } from "src/types/Common";
+import { formatMinuteToReadable, getRandomNumber } from "src/utils/common";
+
+import AgeLimitChip from "./AgeLimitChip";
+import MaxLineTypography from "./MaxLineTypography";
+import NetflixIconButton from "./NetflixIconButton";
+import PlayButton from "./PlayButton";
+import QualityChip from "./QualityChip";
+import SimilarVideoCard from "./SimilarVideoCard";
 import VideoJSPlayer from "./watch/VideoJSPlayer";
 
-const Transition = forwardRef(function Transition(
-  props: TransitionProps & {
-    children: React.ReactElement<any, any>;
+const Transition = forwardRef(
+  (
+    props: TransitionProps & {
+      children: React.ReactElement;
+    },
+    ref: React.Ref<unknown>,
+  ) => {
+    return <Slide direction="up" ref={ref} {...props} />;
   },
-  ref: React.Ref<unknown>,
-) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
+);
 
 export default function DetailModal() {
   const { detail, setDetailType } = useDetailModal();
@@ -97,8 +101,7 @@ export default function DetailModal() {
                     {
                       type: "video/youtube",
                       src: `https://www.youtube.com/watch?v=${
-                        detail.mediaDetail?.videos.results[0]?.key ||
-                        "L3oOldViIgY"
+                        detail.mediaDetail?.videos.results[0]?.key || "L3oOldViIgY"
                       }`,
                     },
                   ],
@@ -108,7 +111,7 @@ export default function DetailModal() {
 
               <Box
                 sx={{
-                  background: `linear-gradient(77deg,rgba(0,0,0,.6),transparent 85%)`,
+                  background: "linear-gradient(77deg,rgba(0,0,0,.6),transparent 85%)",
                   top: 0,
                   left: 0,
                   bottom: 0,
@@ -150,9 +153,7 @@ export default function DetailModal() {
                   },
                 }}
               >
-                <CloseIcon
-                  sx={{ color: "white", fontSize: { xs: 14, sm: 22 } }}
-                />
+                <CloseIcon sx={{ color: "white", fontSize: { xs: 14, sm: 22 } }} />
               </IconButton>
               <Box
                 sx={{
@@ -206,19 +207,13 @@ export default function DetailModal() {
                         <QualityChip label="HD" />
                       </Stack>
 
-                      <MaxLineTypography
-                        maxLine={3}
-                        variant="body1"
-                        sx={{ mt: 2 }}
-                      >
+                      <MaxLineTypography maxLine={3} variant="body1" sx={{ mt: 2 }}>
                         {detail.mediaDetail?.overview}
                       </MaxLineTypography>
                     </Grid>
                     <Grid item xs={12} sm={6} md={4}>
                       <Typography variant="body2" sx={{ my: 1 }}>
-                        {`Genres : ${detail.mediaDetail?.genres
-                          .map((g) => g.name)
-                          .join(", ")}`}
+                        {`Genres : ${detail.mediaDetail?.genres.map((g) => g.name).join(", ")}`}
                       </Typography>
                       <Typography variant="body2" sx={{ my: 1 }}>
                         {`Available in : ${detail.mediaDetail?.spoken_languages
