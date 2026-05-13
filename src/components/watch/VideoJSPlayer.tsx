@@ -11,10 +11,7 @@ interface VideoJSPlayerProps {
   onReady: (player: Player) => void;
 }
 
-export default function VideoJSPlayer({
-  options,
-  onReady,
-}: VideoJSPlayerProps) {
+export default function VideoJSPlayer({ options, onReady }: VideoJSPlayerProps) {
   const videoRef = useRef<HTMLDivElement | null>(null);
   const playerRef = useRef<Player | null>(null);
 

@@ -26,9 +26,9 @@ NC     := \033[0m
 
 
 # Load .env variables if .env.local file exists (Alternatively, you can load .env or other .env.* files as needed)
-ifneq (,$(wildcard ./.env))
-	include .env
-	export $(shell sed 's/=.*//' ./.env)
+ifneq (,$(wildcard ./.env.local))
+	include .env.local
+	export $(shell sed 's/=.*//' ./.env.local)
 endif
 
 DOCKER_REPO := ${DOCKER_REPO}
@@ -72,7 +72,7 @@ install: ## Install dependencies
 
 dev: ## Start React development server
 	@echo "Starting React development server...[2/7]"
-	@npm start
+	@npm run dev
 
 build: ## Build React app for production
 	@echo "Building React app for production...[3/7]"
@@ -91,12 +91,16 @@ lint: ## Lint code with ESLint
 
 test: ## Run tests with React Testing Library
 	@echo "Running tests...[6/7]"
+	@npm run test -- --watchAll=false || (echo "$(RED)🚫 Tests failed.$(NC)" && exit 1)
+
 	@if find tests/ -name "*.test.js" -o -name "*.spec.js" 2>/dev/null | grep -q .; then \
 		npm test -- --watchAll=false || (echo "$(RED)🚫 Tests failed.$(NC)" && exit 1); \
 		echo "$(GREEN)✅ Tests passed & Completed.$(NC)"; \
 	else \
 		echo "$(YELLOW)⚠️  No JS tests found. Skipping.$(NC)"; \
 	fi
+
+	
 
 check: fmt check-all ## Run all checks & optionally can add fmt to run formatting before checks (mirrors pre-push guardrails)
 	@echo "$(GREEN)✅ All checks passed — safe to push$(NC)"
