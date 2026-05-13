@@ -51,9 +51,9 @@ const MainHeader = () => {
         backgroundImage: "none",
         ...(isOffset
           ? {
-              bgcolor: "primary.main",
-              boxShadow: (theme) => theme.shadows[4],
-            }
+            bgcolor: "primary.main",
+            boxShadow: (theme) => theme.shadows[4],
+          }
           : { boxShadow: 0, bgcolor: "transparent" }),
       }}
     >
