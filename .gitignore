@@ -107,5 +107,13 @@ terraform.rc
 
 # Local misc files
 Local.MD
-AGENTS.md
-LINTING_SETUP.md
+
+
+# Ignore .env files, which may contain sensitive information
+.env
+.env.*.local   
+.env.local
+
+
+# Docker related files
+.dockerignore
