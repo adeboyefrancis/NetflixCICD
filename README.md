@@ -1,4 +1,4 @@
-# netflix-clone-using-react-typescript-mui
+# netflix-clone-using-react-typescript-mui(Sandbox)
 
 This repository contains a Netflix‑style frontend built with React, TypeScript, MUI and Vite.
 
