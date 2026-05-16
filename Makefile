@@ -86,7 +86,7 @@ fmt: ## Format code with Prettier
 
 lint: ## Lint code with ESLint
 	@echo "Linting code...[5/7]"
-	@npx eslint src/ --quiet --fix|| (echo "$(RED)🚫 ESLint failed.$(NC)" && exit 1)
+	@npx eslint src/ --quiet|| (echo "$(RED)🚫 ESLint failed.$(NC)" && exit 1)
 	@echo "$(GREEN)✅ Linting Completed & ESLint passed.$(NC)"
 
 test: ## Run tests with React Testing Library

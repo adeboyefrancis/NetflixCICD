@@ -1,0 +1,36 @@
+name: CI Pipeline  Code Quality for Linting, Testing and Building Job
+
+on:
+  # Stage A: Runs on any PR targeting main branch for linting, testing and building
+  pull_request:
+    branches: [ main ]
+
+  # Stage B: Runs when code is merged into main branch for deployment
+  push:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+
+      - name: Set up Node Environment using version 20+
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Format Code with Prettier
+        run: npx prettier --check src/
+
+      - name: Static Analysis (Lint code)
+        run: npx eslint src/ --quiet || (echo "ESLint failed. Please fix linting issues." && exit 1)
+
+      - name: Run Unit Tests
+        run: npm test
