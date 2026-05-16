@@ -1,10 +1,14 @@
+# CI Pipeline Status Badge
+
+[![CI Pipeline  Code Quality for Linting, Testing and Building Job](https://github.com/adeboyefrancis/NetflixCICD/actions/workflows/ci-build.yml/badge.svg)](https://github.com/adeboyefrancis/NetflixCICD/actions/workflows/ci-build.yml)
+
 # netflix-clone-using-react-typescript-mui(SandboxLab)
 
 This repository contains a Netflix‑style frontend built with React, TypeScript, MUI and Vite.
 
 ## 🧪 Testing
 
-The project is configured to use **Jest** powered by `ts-jest` for TypeScript support.  Because the Jest configuration itself is written in TypeScript, we also install `ts-node` so it can run on CI. A basic helper test is included to verify the configuration.
+The project is configured to use **Jest** powered by `ts-jest` for TypeScript support. Because the Jest configuration itself is written in TypeScript, we also install `ts-node` so it can run on CI. A basic helper test is included to verify the configuration.
 
 ### Scripts
 
@@ -21,7 +25,7 @@ npm run test:watch
 
 ### Test files
 
-Place your tests in the top‑level `test/` directory using the `.test.ts` / `.test.tsx` convention.  The `test/common.test.ts` file demonstrates some example assertions.
+Place your tests in the top‑level `test/` directory using the `.test.ts` / `.test.tsx` convention. The `test/common.test.ts` file demonstrates some example assertions.
 
 ---
 
