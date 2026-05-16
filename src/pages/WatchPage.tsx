@@ -53,7 +53,6 @@ export function Component() {
         },
       ],
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [windowSize]);
 
   const handlePlayerReady = function (player: Player): void {

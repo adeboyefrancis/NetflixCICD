@@ -20,12 +20,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": [
-    "react",
-    "react-hooks",
-    "@typescript-eslint",
-    "import"
-  ],
+  "plugins": ["react", "react-hooks", "@typescript-eslint", "import"],
   "rules": {
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
@@ -45,14 +40,7 @@
     "import/order": [
       "warn",
       {
-        "groups": [
-          "builtin",
-          "external",
-          "internal",
-          "parent",
-          "sibling",
-          "index"
-        ],
+        "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
         "pathGroups": [
           {
             "pattern": "react**",
@@ -72,9 +60,7 @@
             "group": "internal"
           }
         ],
-        "pathGroupsExcludedImportTypes": [
-          "react"
-        ],
+        "pathGroupsExcludedImportTypes": ["react"],
         "newlines-between": "always",
         "alphabetize": {
           "order": "asc",
@@ -88,19 +74,13 @@
     "no-console": [
       "warn",
       {
-        "allow": [
-          "warn",
-          "error"
-        ]
+        "allow": ["warn", "error"]
       }
     ],
     "no-var": "error",
     "prefer-const": "error",
     "prefer-arrow-callback": "error",
-    "eqeqeq": [
-      "error",
-      "always"
-    ],
+    "eqeqeq": ["error", "always"],
     "curly": "error",
     "quotes": [
       "error",
@@ -109,25 +89,16 @@
         "avoidEscape": true
       }
     ],
-    "semi": [
-      "error",
-      "always"
-    ],
-    "comma-dangle": [
-      "error",
-      "always-multiline"
-    ],
+    "semi": ["error", "always"],
+    "comma-dangle": ["error", "always-multiline"],
     "indent": [
-      "error",
+      "off",
       2,
       {
         "SwitchCase": 1
       }
     ],
-    "object-curly-spacing": [
-      "error",
-      "always"
-    ],
+    "object-curly-spacing": ["error", "always"],
     "arrow-spacing": "error",
     "keyword-spacing": "error"
   },
@@ -141,10 +112,7 @@
   },
   "overrides": [
     {
-      "files": [
-        "*.config.ts",
-        "*.config.js"
-      ],
+      "files": ["*.config.ts", "*.config.js"],
       "rules": {
         "import/no-default-export": "off"
       }

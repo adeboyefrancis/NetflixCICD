@@ -64,7 +64,6 @@ export default function TopTrailer({ mediaType }: TopTrailerProps) {
       const videos = data.results.filter((item) => !!item.backdrop_path);
       setVideo(videos[getRandomNumber(videos.length)]);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
   useEffect(() => {
